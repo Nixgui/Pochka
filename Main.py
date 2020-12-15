@@ -1,6 +1,6 @@
 from Func import *
 while 1:
-    a=int(input("1 - Добавление перевода\n2 - Перевод!\n=> "))
+    a=int(input("1-Добавление перевода\n2-Перевод!\n3-Исправление слов\n0-Выход\n=> "))
     if a==1:
         t=int(input("Какое количество слов хотите ввести? => "))
         for j in range(t):
@@ -13,3 +13,11 @@ while 1:
         rus=loe_fail("rus.txt")
         eng=loe_fail("eng.txt")
         rus_eng(rus,eng)
+    if a==0:
+        break
+    if a==3:
+        rus=[]
+        eng=[]
+        rus=loe_fail("rus.txt")
+        eng=loe_fail("eng.txt")
+        recreate("rus.txt","eng.txt",rus,eng)
