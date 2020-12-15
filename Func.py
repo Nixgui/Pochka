@@ -1,8 +1,14 @@
 import random as r
+import pyttsx3
+engine = pyttsx3.init()
+language1='en'
+language2='ru'
 def rus_eng(f1,f2): #Функция перевода слов
     ruen=input("Введите слово которое хотите перевести => ")
     if ruen in f1:
         print(f"{ruen} - {f2[f1.index(ruen)]}") #Вывод Русский - Английский
+        engine.say(f"{ruen} - {f2[f1.index(ruen)]}")
+        engine.runAndWait()
     elif ruen in f2:
         print(f"{ruen} - {f1[f2.index(ruen)]}") #Вывод Английский - Русский
     else:
