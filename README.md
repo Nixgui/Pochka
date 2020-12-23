@@ -1,5 +1,6 @@
 Добро пожаловать!<br>
 Перед заруском установить pyttsx3 "pip install pyttsx3"<br>
+И так же установить Colorama "pip install colorama"
 Если вотникнут проблемы с TTS переводом то установите pypiwin32 "pip install pypiwin32".<br>
 Если установка пакета не помогла то перейдите в AppData.<br>
 Откройте проводник и напишете в проводнике "%appdata%" и затем Enter<br>

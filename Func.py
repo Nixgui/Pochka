@@ -1,5 +1,8 @@
 import random as r
 import pyttsx3
+import colorama
+from colorama import Fore, Back, Style
+colorama.init(autoreset=True)
 engine = pyttsx3.init()
 language1='en'
 language2='ru'
@@ -12,8 +15,8 @@ def rus_eng(f1,f2): #Функция перевода слов
     elif ruen in f2:
         print(f"{ruen} - {f1[f2.index(ruen)]}") #Вывод Английский - Русский
     else:
-        print(f"{ruen} Отсуствует!")
-        print("При отсутсвии слова, вы можете его добавить в меню! Выбрав 'Добавление перевода' ")
+        print(f"{Fore.RED}{ruen} Отсуствует!")
+        print(f"{Fore.GREEN}При отсутсвии слова, вы можете его добавить в меню! Выбрав 'Добавление перевода' ")
 
 
 def loe_fail(f):  #Функция открытия и чтения файла
@@ -57,17 +60,17 @@ def znanie(f1,f2):
                 slovo=input("Введите перевод слова => ")
                 ii2=f2.index(slovo)
                 if ii==ii2:
-                    print("Правильно")
+                    print(f"{Fore.GREEN}Правильно")
                     print(".....................\n")
                     bal+=1
                     kol-=1
                 else:
-                    print("Неправильно")
+                    print(f"{Fore.RED}Неправильно")
                     print(".....................\n")
                     kol -= 1
             except:
                 TypeError
-        print("Вы ответили на ","{:.0%}".format(bal/koll), "правильно")
+        print("Вы ответили на",Fore.GREEN + "{:.0%}".format(bal/koll), "правильно")
     if t==2:
         kol = int(input("Сколько слов вы хотите перевести? => "))
         koll = kol
@@ -80,14 +83,14 @@ def znanie(f1,f2):
                 slovo = input("Введите перевод слова => ")
                 ii2 = f1.index(slovo)
                 if ii == ii2:
-                    print("Правильно")
+                    print(f"{Fore.GREEN}Правильно")
                     print(".....................\n")
                     bal += 1
                     kol -= 1
                 else:
-                    print("Неправильно")
+                    print(f"{Fore.RED}Неправильно")
                     print(".....................\n")
                     kol -= 1
             except:
                 TypeError
-        print("Вы ответили на ", "{:.0%}".format(bal / koll), "правильно")
+        print("Вы ответили на", Fore.GREEN + "{:.0%}".format(bal / koll), "правильно")
