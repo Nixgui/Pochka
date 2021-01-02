@@ -14,6 +14,8 @@ def rus_eng(f1,f2): #Функция перевода слов
         engine.runAndWait()
     elif ruen in f2:
         print(f"{ruen} - {f1[f2.index(ruen)]}") #Вывод Английский - Русский
+        engine.say(f"{ruen} - {f1[f2.index(ruen)]}")
+        engine.runAndWait()
     else:
         print(f"{Fore.RED}{ruen} Отсуствует!")
         print(f"{Fore.GREEN}При отсутсвии слова, вы можете его добавить в меню! Выбрав 'Добавление перевода' ")
