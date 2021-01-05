@@ -1,7 +1,7 @@
 import random as r
 import pyttsx3
 import colorama
-from colorama import Fore, Back, Style
+from colorama import Fore
 colorama.init(autoreset=True)
 engine = pyttsx3.init()
 language1='en'
@@ -34,7 +34,7 @@ def add_translate(f1,f2, ru, en): #Функция для добавления с
     with open(f1, 'a', encoding="utf-8-sig") as f1: f1.write(ru + '\n')
     with open(f2, 'a', encoding="utf-8-sig") as f2: f2.write(en + '\n')
 
-def recreate(l1,l2,l3,l4): #Функция для поиска файла и последующей его замены
+def recreate(l1,l2,l3,l4): #Функция для поиска слова и последующей его замены
     ruen = input("Введите слово которое хотите найти => ")
     if ruen in l3:
         print(f"{ruen}")
