@@ -104,5 +104,5 @@ def babocgka():
     plt.savefig("my_image.png")
     plt.show()
 ochki()
-zontik()
+
 babocgka()
