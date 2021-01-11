@@ -106,30 +106,20 @@ def babocgka():
     plt.show()
 def itsecurity():
     fail = open("dannie.txt", "r")
-    fail1=open("legen.txt", "r")
     mas1 = []
     mas2 = []
-    mas3=[]
+    mas3 = []
     for line in fail:
         n = line.find(",")
         mas1.append(line[0:n].strip())
         mas2.append(int(line[n + 1:len(line)].strip()))
-    for line1 in fail1:
-        n1=line1.find(",")
-        mas3.append(int(line1[n1 + 1:len(line1)].strip()))
+        mas3.append(len(mas1))
     fail.close()
-    print(mas1)
-    print(mas2)
-    print(mas3)
     plt.title = "Данные о ИТ безопасности"
     plt.grid(True)
-
     color_rectangle = np.random.rand(7, 3)
     lines=plt.bar(mas3, mas2, color=color_rectangle)
-
-
-    plt.legend(lines[:11], mas1, bbox_to_anchor=(1.04,0.0,0.2,1), loc="upper left",
-                borderaxespad=1, mode='expand' )
+    plt.legend(lines[:11], mas1, bbox_to_anchor=(1.04,0.0,0.2,1), loc="upper left",borderaxespad=1, mode='expand' )
     plt.tight_layout(rect=[0, 0, 0.7, 1])
     plt.get_current_fig_manager().window.state('zoomed')
     plt.interactive(False)
