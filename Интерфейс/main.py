@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-matplotlib.use('TkAgg')
+matplotlib.use('TkAgg') #открытие в отдельном окне для PyCharm
 def ochki():
     x1 = np.arange(-9, -1, 0.01)  # x - массив np.array
     x2 = np.arange(1, 9, 0.01)
@@ -10,7 +10,7 @@ def ochki():
     x5 = np.arange(-9, -6, 0.01)
     x6 = np.arange(6, 9, 0.01)
     x7 = np.arange(-1, 1, 0.01)
-    y1 = (-0.0625*((x1+5)**2) + 2)
+    y1 = (-0.0625*((x1+5)**2) + 2) # y - массив с формулами
     y2 = (-0.0625*((x2-5)**2) + 2)
     y3 = (0.25*((x3+5)**2) -3)
     y4 = (0.25*((x4-5)**2) - 3)
@@ -30,16 +30,16 @@ def ochki():
     plt.show()
 def zontik():
     x1 = np.arange(-12, 12, 0.01)
-    y1 = (-0.0555*(x1**2)+12)
     x2 = np.arange(-4, 4, 0.01)
-    y2 = (-0.125*(x2**2) + 6)
     x3 = np.arange(-12, -4, 0.01)
-    y3 = (-0.125*((x3+8)**2) +6)
     x4 = np.arange(4, 12, 0.01)
-    y4 = (-0.125*((x4-8)**2) +6)
     x5 = np.arange(-4, -0.3, 0.01)
-    y5 = (2*((x5+3)**2)-9)
     x6 = np.arange(-4, -0.2, 0.01)
+    y1 = (-0.0555 * (x1 ** 2) + 12)
+    y2 = (-0.125 * (x2 ** 2) + 6)
+    y3 = (-0.125 * ((x3 + 8) ** 2) + 6)
+    y4 = (-0.125 * ((x4 - 8) ** 2) + 6)
+    y5 = (2 * ((x5 + 3) ** 2) - 9)
     y6 = (1.5*((x6+3)**2)-10)
     plt.subplots()
     plt.grid(True)
@@ -66,7 +66,7 @@ def babocgka():
     x12 = np.arange(1, 2, 0.01)
     x13 = np.arange(-1, 1, 0.01)
     x14 = np.arange(-1, 1, 0.01)
-    x15=np.arange(-2,0,0.01)
+    x15 = np.arange(-2,0,0.01)
     x16 = np.arange(0, 2, 0.01)
     y1 = (-0.125*((x1+9)**2)+8)
     y2 = (-0.125*((x2-9)**2)+8)
@@ -105,25 +105,28 @@ def babocgka():
     plt.savefig("my_image.png")
     plt.show()
 def itsecurity():
-    fail = open("dannie.txt", "r")
-    mas1 = []
-    mas2 = []
-    mas3 = []
+    fail = open("dannie.txt", "r") #фаил с данными
+    mas1 = [] #пустой массив для записи данных
+    mas2 = [] #пустой массив для записи данных после запятой
+    mas3 = [] #пустой массив для счёта данных (сколько всего объектов в файле)
     for line in fail:
-        n = line.find(",")
-        mas1.append(line[0:n].strip())
-        mas2.append(int(line[n + 1:len(line)].strip()))
-        mas3.append(len(mas1))
-    fail.close()
+        n = line.find(",") # поиск запятой
+        mas1.append(line[0:n].strip()) #запись данных до запятой в масси mas1
+        mas2.append(int(line[n + 1:len(line)].strip())) #запись данных в массив после запятой (mas2)
+        mas3.append(len(mas1)) #запись количество обьектов в массив mas3
+    fail.close() #закрытие файла
     plt.title = "Данные о ИТ безопасности"
     plt.grid(True)
-    color_rectangle = np.random.rand(7, 3)
-    lines=plt.bar(mas3, mas2, color=color_rectangle)
-    plt.legend(lines[:11], mas1, bbox_to_anchor=(1.04,0.0,0.2,1), loc="upper left",borderaxespad=1, mode='expand' )
-    plt.tight_layout(rect=[0, 0, 0.7, 1])
-    plt.get_current_fig_manager().window.state('zoomed')
-    plt.interactive(False)
-    plt.show()
+    color_rectangle = np.random.rand(7, 3) #Перетасовка/рандом цвета
+    lines=plt.bar(mas3, mas2, color=color_rectangle) #переменная содержащея в себе график с сортировкой и разными цветами
+    plt.legend(lines[:mas3[-1]], mas1, bbox_to_anchor=(1.04,0.0,0.2,1), loc="upper left",borderaxespad=1, mode='expand' )
+    #тут чуть выше легенда которая отображаеться справа отдельно от графика
+    plt.tight_layout(rect=[0, 0, 0.7, 1]) #сжатие самого графика так что бы поместилась легенда
+    plt.get_current_fig_manager().window.state('zoomed') #так как поле графика мало для легеды, сделал автоматическое развёртывание ->
+    #-> самого графика на полный экран
+    plt.interactive(False) #отключение встроеной интерактивности в PyCharm
+    plt.savefig("ItGraph.png") #сохрание в изображение
+    plt.show() #показ графика
 itsecurity()
 ochki()
 zontik()
