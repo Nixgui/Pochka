@@ -17,7 +17,7 @@ def text_to_btn(event):
     ent.delete(0,END)
 def text_to_lbl():
 
-    ent.insert(END,var.get())
+    lbl.configure(text=var.get()) #ent.insert(END,var.get())
 root = Tk()
 root.title("Название окна")
 root.geometry("500x800")
