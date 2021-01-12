@@ -9,8 +9,11 @@ def lkm(event):
     lbl.configure(text=c, font=f"Arial {cc}")
 def pkm(event):
     global c, cc
-    c-=1
-    cc-=c
+    if c>0:
+        c-=1
+        cc-=c
+    else:
+        cc=10
     lbl.configure(text=c, font=f"Arial {cc}")
 def text_to_btn(event):
     btn["text"]=ent.get()
