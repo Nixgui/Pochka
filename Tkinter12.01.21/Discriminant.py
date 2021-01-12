@@ -1,6 +1,5 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from Function import *
 from math import *
 def text_to_lbl(event):
     global d,x1,x2,x
@@ -37,8 +36,14 @@ lbl_formula.pack()
 lblx=Label(root,text="", font="Arial 15")
 lblx1=Label(root,text="", font="Arial 15")
 lblx2=Label(root,text="", font="Arial 15")
+lbbtn1=Label(root, text="b")
+lbbtn2=Label(root, text="a")
+lbbtn3=Label(root, text="c")
+lbbtn1.pack()
 ent1.pack()
+lbbtn2.pack()
 ent2.pack()
+lbbtn3.pack()
 ent3.pack()
 btn1.pack()
 lbl2.pack(side=LEFT)
