@@ -1,4 +1,3 @@
-Добро пожаловать!<br>
 Перед заруском установить pyttsx3 "pip install pyttsx3"<br>
 И так же установить Colorama "pip install colorama"<br>
 Если вотникнут проблемы с TTS переводом то установите pypiwin32 "pip install pypiwin32".<br>
