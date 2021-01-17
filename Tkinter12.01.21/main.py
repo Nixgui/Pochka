@@ -19,7 +19,6 @@ def text_to_btn(event):
     btn["text"]=ent.get()
     ent.delete(0,END)
 def text_to_lbl():
-
     lbl.configure(text=var.get()) #ent.insert(END,var.get())
 root = Tk()
 root.title("Название окна")
