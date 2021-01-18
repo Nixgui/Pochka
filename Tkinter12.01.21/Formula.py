@@ -12,11 +12,11 @@ root.geometry("700x800")
 def text_to_lbl(event):
     global d,x1,x2,x,a,b,c,rx1,rx2,x_list
     x_list = []
-    a=int(enta.get())
+    a=float(enta.get())
     enta.delete(0, END) #Очистка поля ввода
-    b=int(entb.get())
+    b=float(entb.get())
     entb.delete(0, END) #Очистка поля ввода
-    c=int(entc.get())
+    c=float(entc.get())
     entc.delete(0, END) #Очистка поля ввода
     d=(b**2)-4*a*c
     lbl1["text"] = d
@@ -37,8 +37,12 @@ def text_to_lbl(event):
     elif d==0:
         lblx1.grid_remove() #Удаление из сетки первого корня
         lblx2.grid_remove() #Удаление из сетки второго корня
-        x= (-b / 2*a) #Вычисляем один кореть
-        lblx["text"] = f"x: {x}" #Вывод одного корня
+        x1 = x2 = (-b / 2*a) #Вычисляем один кореть
+        rx1 = round(x1, 3)
+        rx2 = round(x2, 3)
+        x_list.append(rx1)
+        x_list.append(rx2)
+        lblx["text"] = f"x: {x1}" #Вывод одного корня
         lblx.grid() #Повторнный вывод если уровнение запущено заного
     else:
         lblx.grid_remove() #Удаление
@@ -58,9 +62,21 @@ def graf(event):
         xi = np.linspace(x_list[0], x_list[1], freq)
         if x_list[1]>x_list[0]:
             y = [-((a * t ** 2) + (b * t) + c) for t in xi]
+            plt.scatter(points, y0, color='red')
         else:
             plt.scatter(points, y0, color='red')
             y = [((a * t ** 2) + (b * t) + c) for t in xi]
+        if x_list[1]==x_list[0]:
+            if a>0:
+                xii = np.linspace(x_list[0], -x_list[1], freq)
+                yy=[t**2 for t in xii]
+                plt.scatter(points, y0, color='red')
+                plt.plot(xii+x_list[0],yy)
+            else:
+                xii = np.linspace(x_list[0], -x_list[1], freq)
+                yy = [-t ** 2 for t in xii]
+                plt.scatter(points, y0, color='red')
+                plt.plot(xii + x_list[0], yy)
         plt.plot(xi, y)
         plt.tick_params(axis='both', labelsize=14)
         plt.grid(True)
