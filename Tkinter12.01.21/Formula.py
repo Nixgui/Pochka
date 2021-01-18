@@ -48,13 +48,14 @@ def text_to_lbl(event):
         lblx.grid_remove() #Удаление
         lblx1.grid_remove() #Удаление
         lblx2.grid_remove() #Удаление
+        lblimage.grid_remove()
         dd="Корень вычеслить невозможно!"
         lblx["text"] = dd #Замена текста, Корень вычеслить невозможно!
         lblx.grid() #Вывод текста
 
 ##############################################################
 def graf(event):
-        global y,photo
+        global y,photo, lblimage
         y0=0,0
         points=x_list[0],x_list[1]
         print(points)
