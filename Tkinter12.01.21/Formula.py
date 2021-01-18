@@ -124,6 +124,4 @@ lbl1.grid(row=6,column=2)
 lblx.grid(row=7,column=1,columnspan=10)
 lblx1.grid(row=7,column=1,columnspan=5)
 lblx2.grid(row=8,column=1,columnspan=5)
-
-
 root.mainloop()
