@@ -59,8 +59,8 @@ def graf(event):
         if x_list[1]>x_list[0]:
             y = [-((a * t ** 2) + (b * t) + c) for t in xi]
         else:
+            plt.scatter(points, y0, color='red')
             y = [((a * t ** 2) + (b * t) + c) for t in xi]
-        plt.scatter(points, y0, color='red')
         plt.plot(xi, y)
         plt.tick_params(axis='both', labelsize=14)
         plt.grid(True)
@@ -74,7 +74,8 @@ def graf(event):
         lblimage.image =photo
         lblimage.grid(row=9, rowspan=5, column=0, columnspan=10)
 ##############################################################
-lbl_formula=Label(root,text="D=b**2-4*a*c",font="Arial 20")
+lbl_Dformula=Label(root,text="D=b^2-4*a*c,",font="Arial 20")
+lbl_formula=Label(root, text="Формула:(a*x^2+b*x+c=0)",font="Arial 20")
 txta=Label(root,text="a:",font="Arial 20")
 txtb=Label(root,text="b:",font="Arial 20")
 txtc=Label(root,text="c:",font="Arial 20")
@@ -89,7 +90,8 @@ lblx=Label(root,text="",font="Arial 15")
 lblx1=Label(root, text="",font="Arial 15")
 lblx2=Label(root, text="",font="Arial 15")
 #grid
-lbl_formula.grid(row=0, column=0, columnspan=2,sticky="e")
+lbl_Dformula.grid(row=0, column=0, columnspan=2,sticky="e")
+lbl_formula.grid(row=0,column=3)
 txta.grid(row=1,column=0)
 txtb.grid(row=2,column=0)
 txtc.grid(row=3,column=0)
