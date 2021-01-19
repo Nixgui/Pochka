@@ -1,71 +1,51 @@
 from tkinter import *
-from PIL import ImageTk, Image
-c=0
-cc=12
-def lkm(event):
-    global c, cc
-    c+=1
-    cc+=c
-    lbl.configure(text=c, font=f"Arial {cc}")
-def pkm(event):
-    global c, cc
-    if c>0:
-        c-=1
-        cc-=c
-    else:
-        cc=10
-    lbl.configure(text=c, font=f"Arial {cc}")
-def text_to_btn(event):
-    btn["text"]=ent.get()
-    ent.delete(0,END)
-def text_to_lbl():
-    lbl.configure(text=var.get()) #ent.insert(END,var.get())
+from tkinter import ttk
+from tkinter import scrolledtext
+import webbrowser as webb
+from tkinter.filedialog import *
+def web(event):
+    url=webb.get().webb.open_new_tab(ent.get())
+def open_file():
+    o_file=askopenfilename()
+def save_as():
+    as_file=asksaveasfile(mode='w',defaultextension=(".txt"))
+    text=txt.get(0.0,END)
+    as_file.write(text)
+    as_file.close()
 root = Tk()
 root.title("Название окна")
-root.geometry("500x800")
-btn=Button(root,
-           text="Нажми \nна меня",
-           fg="red",
-           bg="lightblue",
-           font="Arial 40",
-           width=15)
-lbl=Label(root,
-          text="0",
-          height=3)
-
-image=Image.open("click.jpg")
-photo=ImageTk.PhotoImage(image)
-btn_image=Button(root,image=photo)
-ent=Entry(root,
-          fg="red",
-          bg="lightblue",
-          font="Arial 40",
-          width=15)
+root.geometry("700x800")
+tab_control=ttk.Notebook(root)
+tab1=Frame(tab_control)
+tab2=Frame(tab_control)
+tab3=Frame(tab_control)
+tab_control.add(tab1, text="First")
+tab_control.add(tab2, text="Second")
+tab_control.add(tab3, text="Trird")
 var=IntVar()
-var.set(2) #Заранее выбрана значение Value
-rad1=Radiobutton(root,
-                 text="Uks",
-                 variable=var,
-                 value=1,
-                 command=text_to_lbl)
-rad2=Radiobutton(root,
-                 text="Kaks",
-                 variable=var,
-                 value=2,
-                 command=text_to_lbl)
-rad3=Radiobutton(root,
-                 text="Kolm",
-                 variable=var,
-                 value=3,
-                 command=text_to_lbl)
-btn.pack()
-lbl.pack()
-btn_image.pack()
-ent.pack(padx=20,pady=20)
-rad1.pack(side=LEFT, padx=20)
-rad2.pack(side=LEFT, padx=20)
-rad3.pack(side=LEFT, padx=20)
-btn.bind("<Button-1>", lkm)
-btn.bind("<Button-3>", pkm)
-ent.bind("<Return>", text_to_btn)
+var.set(25)
+spin=Spinbox(tab1,from_=0, to=100,textvariable=var)
+ent=Entry(tab1,width=40)
+ent.bind("<Return>", web)
+txt=scrolledtext.ScrolledText(tab1, width=50, height=9)
+menu=Menu(root)
+root.config(menu=menu)
+color_menu=Menu(menu,tearoff=0)
+menu.add_cascade(label="Colors",menu=color_menu)
+color_menu.add_command(label="Red",command=lambda:tab2.configure(bg='Red'))
+color_menu.add_command(label="Blue",command=lambda:tab2.configure(bg='Blue'))
+color_menu.add_command(label="Green",command=lambda:tab2.configure(bg='Green'))
+dialog_m=Menu(menu,tearoff=0)
+menu.add_cascade(label="File", menu=dialog_m)
+dialog_m.add_command(label="Open...", command=open_file)
+dialog_m.add_command(label="Save As",command=save_as)
+spin.grid(row=0, column=0)
+ent.grid(row=0, column=1)
+txt.grid(row=1,column=0, columnspan=2)
+
+
+
+
+tab_control.pack(expand=1,fill="both")
+
 root.mainloop()

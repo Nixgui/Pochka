@@ -9,8 +9,10 @@ root=Tk()
 root.title("Решение уровнения")
 root.geometry("700x800")
 #
+#tick=0
 def text_to_lbl(event):
-    global d,x1,x2,x,a,b,c,rx1,rx2,x_list
+    global d,x1,x2,x,a,b,c,rx1,rx2,x_list, tick
+    #tick+=1
     x_list = []
     a=float(enta.get())
     enta.delete(0, END) #Очистка поля ввода
@@ -48,6 +50,9 @@ def text_to_lbl(event):
         lblx.grid_remove() #Удаление
         lblx1.grid_remove() #Удаление
         lblx2.grid_remove() #Удаление
+       # for tt in tick:
+       #     lblimage.grid_remove()
+       #     print(tt)
         lblimage.grid_remove()
         dd="Корень вычеслить невозможно!"
         lblx["text"] = dd #Замена текста, Корень вычеслить невозможно!
@@ -62,11 +67,11 @@ def graf(event):
         freq = 100
         xi = np.linspace(x_list[0], x_list[1], freq)
         if x_list[1]>x_list[0]:
-            y = [-((a * t ** 2) + (b * t) + c) for t in xi]
+            y = [(a * t ** 2) + (b * t) + c for t in xi]
             plt.scatter(points, y0, color='red')
         else:
             plt.scatter(points, y0, color='red')
-            y = [((a * t ** 2) + (b * t) + c) for t in xi]
+            y = [(-a * t ** 2) + (b * t) + c for t in xi]
         if x_list[1]==x_list[0]:
             if a>0:
                 xii = np.linspace(x_list[0], -x_list[1], freq)
