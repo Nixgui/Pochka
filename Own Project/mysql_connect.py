@@ -1,5 +1,6 @@
 from mysql.connector import MySQLConnection, Error
 from DBconn import DBconf
+from PySide import QtCore, QtGui
 
 def connect():
 	global connect
