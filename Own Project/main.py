@@ -68,7 +68,7 @@ def show_client(): #Функция для подключения и вывода
         cursor.close()
         conn.close()
 def acconts(): #Функция для извлечения из БД аккаунтов
-    global cursor, conn, rowl
+    global cursor, conn, rowlp
     try:
         db_config = DBconf()
         conn = MySQLConnection(**db_config)
