@@ -4,7 +4,7 @@ import sys
 from PySide import QtCore, QtGui #ипортируем GUI
 from Beggin_1 import Ui_Window1, Ui_buttons, Ui_Data #Импорт Окон
 def show_client(): #Функция для подключения и вывода строк из БД
-    global cursor, conn, rows, row
+    global cursor, conn, rows, row, t
     try:
         db_config=DBconf()
         conn = MySQLConnection(**db_config)
@@ -12,10 +12,55 @@ def show_client(): #Функция для подключения и вывода
         cursor.execute("SELECT clients.ClientName, hairdresser.HairdresserName, clients.BeginData, clients.EndData "
                        "FROM clients "
                        "INNER JOIN hairdresser ON clients.Hairdresser = hairdresser.ID")
-
-        for row in iter_row(cursor, 10): #Вывод 10 строк разом
+        t=0
+        for row in iter_row(cursor, 10):#Вывод 10 строк разом
+            t+=1
             rows=row[0],row[1],row[2],row[3]
-
+            if t==1:
+                ui2.label_2.setText(row[0])  # Замена пустого текста на то что есть в БД
+                ui2.label.setText(row[1])  # Замента пустого текста на то что есть в БД
+                ui2.dateTimeEdit.setDateTime(row[2])  # Выставление Даты и Времени начала работы
+                ui2.dateTimeEdit_2.setDateTime(row[3])
+            if t==2:
+                ui2.label_7.setText(row[0])
+                ui2.label_15.setText(row[1])
+                ui2.dateTimeEdit_5.setDateTime(row[2])
+                ui2.dateTimeEdit_13.setDateTime(row[3])
+            if t==3:
+                ui2.label_8.setText(row[0])
+                ui2.label_16.setText(row[1])
+                ui2.dateTimeEdit_6.setDateTime(row[2])
+                ui2.dateTimeEdit_14.setDateTime(row[3])
+            if t==4:
+                ui2.label_9.setText(row[0])
+                ui2.label_17.setText(row[1])
+                ui2.dateTimeEdit_7.setDateTime(row[2])
+                ui2.dateTimeEdit_15.setDateTime(row[3])
+            if t==5:
+                ui2.label_10.setText(row[0])
+                ui2.label_18.setText(row[1])
+                ui2.dateTimeEdit_8.setDateTime(row[2])
+                ui2.dateTimeEdit_16.setDateTime(row[3])
+            if t==6:
+                ui2.label_11.setText(row[0])
+                ui2.label_19.setText(row[1])
+                ui2.dateTimeEdit_9.setDateTime(row[2])
+                ui2.dateTimeEdit_17.setDateTime(row[3])
+            if t==7:
+                ui2.label_12.setText(row[0])
+                ui2.label_20.setText(row[1])
+                ui2.dateTimeEdit_10.setDateTime(row[2])
+                ui2.dateTimeEdit_18.setDateTime(row[3])
+            if t==8:
+                ui2.label_13.setText(row[0])
+                ui2.label_21.setText(row[1])
+                ui2.dateTimeEdit_11.setDateTime(row[2])
+                ui2.dateTimeEdit_19.setDateTime(row[3])
+            if t==9:
+                ui2.label_14.setText(row[0])
+                ui2.label_22.setText(row[1])
+                ui2.dateTimeEdit_12.setDateTime(row[2])
+                ui2.dateTimeEdit_20.setDateTime(row[3])
     except Error as e:
         print(e)
 
@@ -78,10 +123,6 @@ def ShowClient(): #функция для перехода к третьему о
     Form.hide() #Скрыть 2-е окно
     Data.show() #Показать 3-е окно (1-е окно скрыто до тех пор пока его не вызовут)
     show_client() #Фукция показа клиентов
-    ui2.label_2.setText(row[0]) #Замена пустого текста на то что есть в БД
-    ui2.label.setText(row[1]) #Замента пустого текста на то что есть в БД
-    ui2.dateTimeEdit.setDateTime(row[2]) #Выставление Даты и Времени начала работы
-    ui2.dateTimeEdit_2.setDateTime(row[3]) #Выставление Даты и Времени окнчания работы
 ui1.ShowClient.clicked.connect(ShowClient) #Присвоение к кнопке ShowClient по клику ЛКМ обращение к функции ShowClient
 ui.pushButton.clicked.connect(login) #Присвоение к кнопке pushButton обращение к функции login
 sys.exit(app.exec_()) #Иницелизация приложения (Второго быть не может!)
