@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы pyclient.accounts: ~1 rows (приблизительно)
+-- Дамп данных таблицы pyclient.accounts: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
 INSERT INTO `accounts` (`ID`, `Username`, `Password`) VALUES
 	(1, 'Admin', 'Adminn');
@@ -41,12 +41,14 @@ CREATE TABLE IF NOT EXISTS `clients` (
   PRIMARY KEY (`ID`) USING BTREE,
   KEY `FK_clients_hairdresser` (`Hairdresser`),
   CONSTRAINT `FK_clients_hairdresser` FOREIGN KEY (`Hairdresser`) REFERENCES `hairdresser` (`ID`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы pyclient.clients: ~1 rows (приблизительно)
+-- Дамп данных таблицы pyclient.clients: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `clients` DISABLE KEYS */;
 INSERT INTO `clients` (`ID`, `ClientName`, `BeginData`, `EndData`, `Hairdresser`) VALUES
-	(1, 'Nina', '2021-01-22 21:00:00.0000', '2021-01-22 22:47:44.0000', 1);
+	(1, 'Nina', '2021-01-22 21:00:00.0000', '2021-01-22 22:47:44.0000', 1),
+	(2, 'Vasilij', '2021-01-26 09:00:00.0000', '2021-01-26 10:00:00.0000', 4),
+	(3, 'Olga', '2021-01-26 10:00:00.0000', '2021-01-26 12:00:00.0000', 2);
 /*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 
 -- Дамп структуры для таблица pyclient.hairdresser
@@ -55,12 +57,15 @@ CREATE TABLE IF NOT EXISTS `hairdresser` (
   `HairdresserName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `HairdresserName` (`HairdresserName`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Дамп данных таблицы pyclient.hairdresser: ~1 rows (приблизительно)
+-- Дамп данных таблицы pyclient.hairdresser: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `hairdresser` DISABLE KEYS */;
 INSERT INTO `hairdresser` (`ID`, `HairdresserName`) VALUES
-	(1, 'Diana');
+	(3, 'Anna'),
+	(1, 'Diana'),
+	(4, 'Marjana'),
+	(2, 'Oleg');
 /*!40000 ALTER TABLE `hairdresser` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
